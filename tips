@@ -1,1 +1,64 @@
-tfhkjl;fsdf
+char ch = '9';  // перевести char в int
+int num = ch - '0';
+
+**********
+    // ускорение cin и cout, ставится в начале функции main
+ios::sync_with_stdio(0);
+cin.tie(0);
+
+**********
+	//перевод в двоичную систему (имба)
+bitset<16> bitset = i;
+unsigned long d = bitset.to_ulong();
+
+**********
+		// метод рекурсии , для генерации множества подмножеств
+void search(int k) {
+ if (k == n+1) {
+ 		//записать здесь можно или счетчик 
+  } 
+else {
+    subset.push_back(k);
+    search(k+1);
+    subset.pop_back();
+    search(k+1);
+  }
+ }
+
+**********
+	//метод всевозможных перестановок(их колличество равно n!)
+vector<int> permutation;
+bool chosen[n+1];
+
+void search() {
+ if (permutation.size() == n) {
+ 		//	обработать	перестановку
+  } 
+ else {
+    for (int i = 1; i <= n; i++) {
+      if (chosen[i]) continue;
+      chosen[i] = true;
+      permutation.push_back(i);
+      search();
+      chosen[i] = false;
+      permutation.pop_back();
+    }
+  }
+}
+
+упрощая: 
+
+ for (int i = 1; i <= n; i++) {
+  	permutation.push_back(i);
+ }
+ do {
+ 	//	обработать	перестановку
+ } while (next_permutation(permutation.begin(), permutation.end()));    
+
+
+**********
+	/нахождение больше подмассива в массиве(самый быстрый вариант)
+for (int k = 0; k < arr.size(); k++) {
+	sum = max(arr[k], sum + arr[k]);
+	best = max(best, sum);
+
